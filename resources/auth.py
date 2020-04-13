@@ -1,13 +1,15 @@
-from flask import Response, request, jsonify
+import datetime
+
+from flask import request
 from flask_jwt_extended import (
     create_access_token, get_raw_jwt,
     jwt_required)
-from .jwt_init import jwt
-from database.models import User
 from flask_restful import Resource
-import datetime
-from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError
+from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist
+
+from database.models import User
 from resources.errors import SchemaValidationError, EmailAlreadyExistsError, UnauthorizedError, InternalServerError
+from .jwt_init import jwt
 
 blacklist = set()
 
