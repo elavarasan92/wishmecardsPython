@@ -1,5 +1,5 @@
 import io
-
+import json
 from flask import Response, request, render_template, jsonify, make_response
 from flask import send_file
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -7,20 +7,20 @@ from flask_restful import Resource
 from mongoengine.errors import DoesNotExist, InvalidQueryError
 from werkzeug.utils import secure_filename
 
-from database.models import CoupleImage
+from database.models import ImageDetail
 from resources.errors import SchemaValidationError, InternalServerError, \
-    UpdatingCoupleImageError, DeletingCoupleImageError, CoupleImageNotExistsError
+    UpdatingImageDetailError, DeletingImageDetailError, ImageDetailNotExistsError
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
+#http://127.0.0.1:3500/display_image/5e9327491848788505e send object id that is id of user or eventdetail object
 class DisplayImageApi(Resource):
-    def get(self):
-        image_value = CoupleImage.objects(image_id=1).first()
+    def get(self,id):
+        image_value = ImageDetail.objects(image_ref_id=id).first()
         photo = image_value.image_data.read()
         content_type = image_value.image_data.content_type
         print(photo)
@@ -28,7 +28,7 @@ class DisplayImageApi(Resource):
         return send_file(io.BytesIO(photo), attachment_filename='profile.png', mimetype='image/png')
 
 
-class CoupleImagesApi(Resource):
+class UploadImageApi(Resource):
     # to get html for uploading image
     def get(self):
         headers = {'Content-Type': 'text/html'}
@@ -40,16 +40,20 @@ class CoupleImagesApi(Resource):
             resp = jsonify({'message': 'No file part in the request'})
             resp.status_code = 400
             return resp
+        #image_ref_id = request.image_ref_id
+        # pretty printing data
+        print("Form : "+str(request.form.get('image_ref_id')))
+        print("get_json : " + str(request.get_json()))
 
         files = request.files.getlist('files[]')
-
+        image_ref_id = request.form.get('image_ref_id')
         errors = {}
         success = False
 
         for file in files:
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                couple_image = CoupleImage(image_id=1, image_name='Elavarasan')
+                couple_image = ImageDetail(image_ref_id=image_ref_id)
                 couple_image.image_data.new_file()
                 couple_image.image_data.replace(file, filename="image.jpg")
                 couple_image.image_data.close()
@@ -76,19 +80,19 @@ class CoupleImagesApi(Resource):
             return resp
 
 
-class CoupleImageApi(Resource):
+class EditImageApi(Resource):
     @jwt_required
     def put(self, id):
         try:
             user_id = get_jwt_identity()
-            couple_image = CoupleImage.objects.get(id=id, added_by=user_id)
+            couple_image = ImageDetail.objects.get(id=id, added_by=user_id)
             body = request.get_json()
-            CoupleImage.objects.get(id=id).update(**body)
-            return '', 200
+            ImageDetail.objects.get(id=id).update(**body)
+            return 'Successfully updated image ', 200
         except InvalidQueryError:
             raise SchemaValidationError
         except DoesNotExist:
-            raise UpdatingCoupleImageError
+            raise UpdatingImageDetailError
         except Exception:
             raise InternalServerError
 
@@ -96,19 +100,19 @@ class CoupleImageApi(Resource):
     def delete(self, id):
         try:
             user_id = get_jwt_identity()
-            couple_image = CoupleImage.objects.get(id=id, added_by=user_id)
+            couple_image = ImageDetail.objects.get(id=id, added_by=user_id)
             couple_image.delete()
-            return '', 200
+            return 'Successfully deleted Image', 200
         except DoesNotExist:
-            raise DeletingCoupleImageError
+            raise DeletingImageDetailError
         except Exception:
             raise InternalServerError
 
     def get(self, id):
         try:
-            couple_images = CoupleImage.objects.get(id=id).to_json()
+            couple_images = ImageDetail.objects.get(id=id).to_json()
             return Response(couple_images, mimetype="application/json", status=200)
         except DoesNotExist:
-            raise CoupleImageNotExistsError
+            raise ImageDetailNotExistsError
         except Exception:
             raise InternalServerError

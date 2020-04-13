@@ -1,10 +1,12 @@
+import datetime
+
 from flask import request, render_template
 from flask_jwt_extended import create_access_token, decode_token
-from database.models import User
 from flask_restful import Resource
-import datetime
+from jwt.exceptions import DecodeError, InvalidTokenError
+
+from database.models import User
 from resources.errors import SchemaValidationError, InternalServerError, EmailDoesnotExistsError, BadTokenError
-from jwt.exceptions import ExpiredSignatureError, DecodeError, InvalidTokenError
 from services.mail_service import send_email
 
 

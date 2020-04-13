@@ -1,3 +1,4 @@
+import os
 from flask import Response, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
@@ -5,7 +6,7 @@ from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, 
 
 from database.models import EventDetail, User
 from resources.errors import SchemaValidationError, EventDetailAlreadyExistsError, InternalServerError, \
-    UpdatingEventDetailError, DeletingEventDetailError, EventDetailNotExistsError
+    UpdatingEventDetailError, DeletingEventDetailError, EventDetailNotExistsError, UserNotExistsError
 
 
 class EventDetailsApi(Resource):
@@ -40,6 +41,8 @@ class EventDetailsApi(Resource):
             raise SchemaValidationError
         except NotUniqueError:
             raise EventDetailAlreadyExistsError
+        except User.DoesNotExist:
+            raise UserNotExistsError
         except Exception as e:
             print(e)
             raise InternalServerError

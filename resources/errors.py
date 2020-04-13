@@ -54,19 +54,23 @@ class EventDetailNotExistsError(Exception):
     pass
 
 
-class CoupleImageAlreadyExistsError(Exception):
+class ImageDetailAlreadyExistsError(Exception):
     pass
 
 
-class UpdatingCoupleImageError(Exception):
+class UpdatingImageDetailError(Exception):
     pass
 
 
-class DeletingCoupleImageError(Exception):
+class DeletingImageDetailError(Exception):
     pass
 
 
-class CoupleImageNotExistsError(Exception):
+class ImageDetailNotExistsError(Exception):
+    pass
+
+
+class UserNotExistsError(Exception):
     pass
 
 
@@ -95,20 +99,20 @@ errors = {
         "message": "EventDetail with given id doesn't exists",
         "status": 400
     },
-    "CoupleImageAlreadyExistsError": {
-        "message": "CoupleImage with given name already exists",
+    "ImageDetailAlreadyExistsError": {
+        "message": "ImageDetail with given name already exists",
         "status": 400
     },
-    "UpdatingCoupleImageError": {
+    "UpdatingImageDetailError": {
         "message": "Updating Couple Image added by other is forbidden",
         "status": 403
     },
-    "DeletingCoupleImageError": {
+    "DeletingImageDetailError": {
         "message": "Deleting Couple Image added by other is forbidden",
         "status": 403
     },
-    "CoupleImageNotExistsError": {
-        "message": "CoupleImage with given id doesn't exists",
+    "ImageDetailNotExistsError": {
+        "message": "ImageDetail with given id doesn't exists",
         "status": 400
     },
     "MovieAlreadyExistsError": {
@@ -142,5 +146,10 @@ errors = {
     "BadTokenError": {
         "message": "Invalid token",
         "status": 403
+    },
+    "UserNotExistsError": {
+        "message": "User does not exist",
+        "status": 404
     }
+
 }

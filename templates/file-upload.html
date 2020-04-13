@@ -7,7 +7,7 @@
 		$(document).ready(function (e) {
 			$('#upload').on('click', function () {
 				var form_data = new FormData();
-				var ins = document.getElementById('multiFiles').files.length;
+				var ins = document.getElementById('uploadFIle').files.length;
 				
 				if(ins == 0) {
 					$('#msg').html('<span style="color:red">Select at least one file</span>');
@@ -15,11 +15,13 @@
 				}
 				
 				for (var x = 0; x < ins; x++) {
-					form_data.append("files[]", document.getElementById('multiFiles').files[x]);
+					form_data.append("files[]", document.getElementById('uploadFIle').files[x]);
 				}
-				
+				//to set image_ref_id from User or EventDetail class
+				form_data.append("image_ref_id", document.getElementById('image_ref_id').value);
+				console.log("image_ref_id" +form_data.getAll('image_ref_id'));
 				$.ajax({
-					url: '/couple_images', // point to server-side URL
+					url: '/upload_image', // point to server-side URL
 					dataType: 'json', // what to expect back from server
 					cache: false,
 					contentType: false,
@@ -51,7 +53,11 @@
 	<dl>
 		<p>
 			<p id="msg"></p>
-			<input type="file" id="multiFiles" name="files[]" accept="image/*"/>
+			<label for="image_ref_id">Image Ref Id from event or user class : </label><br>
+			//http://127.0.0.1:3500/display_image/5e9327491848788505e send objectid that is id of event or user here
+			<input type="text" id="image_ref_id" name="image_ref_id"><br><br>
+			<label for="uploadFIle">Upload image here : </label><br>
+			<input type="file" id="uploadFIle" name="files[]" accept="image/*"/><br><br>
 			<button id="upload">Upload</button>
 		</p>
 	</dl>
