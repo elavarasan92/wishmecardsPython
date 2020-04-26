@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3c2d89b-dc31-4f72-b7fe-5c3218e208fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/visiting_card.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +43,12 @@
     <property name="settings.editor.selected.configurable" value="ics" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\templates" />
       <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\database" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
@@ -178,10 +182,10 @@
     <list>
       <item itemvalue="Python.run" />
       <item itemvalue="Python.Base64Decode" />
-      <item itemvalue="Python.UploadImage" />
-      <item itemvalue="Python.FlaskJwtCustomData" />
-      <item itemvalue="Python.auth" />
       <item itemvalue="Python.FlaskJWT" />
+      <item itemvalue="Python.FlaskJwtCustomData" />
+      <item itemvalue="Python.UploadImage" />
+      <item itemvalue="Python.auth" />
     </list>
     <recent_temporary>
       <list>
@@ -239,22 +243,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586677320148" />
-    <state width="1345" height="185" key="GridCell.Tab.0.bottom" timestamp="1586756429591">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1587915181914">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="185" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586756429591" />
-    <state width="1345" height="185" key="GridCell.Tab.0.center" timestamp="1586756429591">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587915181914" />
+    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1587915181914">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="185" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586756429591" />
-    <state width="1345" height="185" key="GridCell.Tab.0.left" timestamp="1586756429591">
+    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587915181914" />
+    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1587915181913">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="185" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586756429591" />
-    <state width="1345" height="185" key="GridCell.Tab.0.right" timestamp="1586756429591">
+    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587915181913" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1587915181914">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="185" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586756429591" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587915181914" />
     <state x="467" y="89" key="RollbackChangesDialog" timestamp="1586680627443">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -267,14 +271,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1586605651755" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1586752871736">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1587881216753">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586752871736" />
-    <state x="486" y="182" width="710" height="546" key="find.popup" timestamp="1586704010896">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587881216753" />
+    <state x="486" y="182" width="710" height="546" key="find.popup" timestamp="1587905152663">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="486" y="182" width="710" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586704010896" />
+    <state x="486" y="182" width="710" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1587905152663" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586603871493">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
