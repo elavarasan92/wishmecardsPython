@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "73df1463-4817-4c09-a4e2-ec0ce336e122",
+		"name": "WishmecardsMovieBagJwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3500/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"elavarasan_natarajan@yahoo.com\",\n\"password\":\"default\"}"
+				},
+				"url": {
+					"raw": "http://localhost:3500/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/movies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODYwNjI5NzUsIm5iZiI6MTU4NjA2Mjk3NSwianRpIjoiYzE2ZmY1NTItZTkwOS00MTI0LTg4N2MtYmIxZGRiNjZiMjRmIiwiZXhwIjoxNTg2NjY3Nzc1LCJpZGVudGl0eSI6IjVlODhiNGNlNjQ2YjE0OTc2ZTFjYTRlNSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.HmitXCKL_UoHYy5UbA__esNPouG4s9bOPRiq489vp6Q"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"The Dark Knight\",\n    \"casts\": [\"Christian Bale\", \"Heath Ledger\", \"Aaron Eckhart\", \"Michael Caine\"],\n    \"genres\": [\"Action\", \"Crime\", \"Drama\"]\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3500/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_name\": \"Elavarasan\",\n    \"email\": \"elavarasan_natarajan@ahoo.com\",\n    \"picture_link\": \"https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3166267760083480&height=50&width=50&ext=1590480380&hash=AeR4gImK_vAuhEWz\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3500/auth/socialauth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"auth",
+						"socialauth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3500/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/event_details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODYxMDE5NjksIm5iZiI6MTU4NjEwMTk2OSwianRpIjoiMmI2NjIxNjAtYzM5NC00ZjBkLTk4NGMtNzBmNDVhNzgxZDZiIiwiZXhwIjoxNTg2NzA2NzY5LCJpZGVudGl0eSI6IjVlODlmZTllMTRmMGY0NWY4NmFhY2VhZCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.T__eFrBoqSz9RV-JtNYUHV0-_9pw2iShOg_rCzj_rAA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3500/event_details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"event_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/event_details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY2MTQ1OTEsIm5iZiI6MTU4NjYxNDU5MSwianRpIjoiNGE1NGE2YmMtNDQ1Yy00NjEzLTk2Y2QtY2I0OWZlZjhmMzA5IiwiZXhwIjoxNTg3MjE5MzkxLCJpZGVudGl0eSI6IjVlOTFkMTM2MjI1ZGI0ODdlMWU0MTM5OCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.RTy8jKDaTtY2ZUa65VHoP8U_Wv0XZ-iqj2GN0znMAcw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://localhost:3500/event_details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"event_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/event_details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY3MDIyMzEsIm5iZiI6MTU4NjcwMjIzMSwianRpIjoiN2EzNTZiMWYtNTI4OC00MWVjLWE2MzAtM2Y1YzAyOWY3NzgzIiwiZXhwIjoxNTg3MzA3MDMxLCJpZGVudGl0eSI6IjVlOTMyNzg5YjQ5YTE4NDg3ODg1MDVhZCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.Q-PkmEkKsBNnwCe9i02W4xqOE506P9koXYAR3evdqJk"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"bride_name\" : \"Saradha\",\r\n     \"groom_name\" : \"Muthu\",\r\n     \"mobile_no\" : \"8531940331\",\r\n     \"event_date\" : \"Jun 1 2005  1:33PM\",\r\n     \"venue\" : \"Sakthi mahal\",\r\n     \"venue_address\" : \"Koilambakam main road, Chennai -600117.\"}"
+				},
+				"url": {
+					"raw": "http://localhost:3500/event_details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"event_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/auth/logout",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY3NTUwMTYsIm5iZiI6MTU4Njc1NTAxNiwianRpIjoiMjU3OGJmNjctYWRiMS00OTgxLWExYjMtYjkzZTRjZDcxZWNhIiwiZXhwIjoxNTg3MzU5ODE2LCJpZGVudGl0eSI6IjVlOTMyNzg5YjQ5YTE4NDg3ODg1MDVhZCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.V0oWhkHXTxXfbCqCodiM0kGm5fZ3wEXVqSkX1vG1kJE"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3500/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/visiting_card/5ea5aea188a6ba183fe50b1b",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODc5MTYzMTgsIm5iZiI6MTU4NzkxNjMxOCwianRpIjoiNDI4Njc1ZDUtNzNjMS00YTVjLTk1NzAtOTc3MjAyNjEyMWZkIiwiZXhwIjoxNjE5NDUyMzE4LCJpZGVudGl0eSI6IjVlYTVhZTE3ODBiMjc5MDE1ZTIyNmY5MCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.AG5_dCoXZ2wE_G85os7ZZRANRVew3eDFfjkv5BJDtFU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_name\": \"elavarasan\",\n    \"email\": \"rameshelava@gmail.com\",\n    \"mobile_no\": \"8531990331\",\n    \"company_name\": \"PrinceDecors\",\n    \"designation\": \"Founder\",\n    \"company_link\": \"https://princedecors.com\",\n    \"company_address\": \"NO:6/64,balaraman first cross street,Nanmangalam,Chennai-600117.\",\n    \"facebook_link\": \"https://www.facebook.com/princedecors/\",\n    \"messenger_link\": \"http://m.me/princedecors\",\n    \"twitter_link\": \"https://twitter.com/elavara27570054\",\n    \"linkedin_link\": \"https://www.linkedin.com/in/elavarasan92\",\n    \"instagram_link\": \"https://www.instagram.com/princedecors/\",\n    \"youtube_link\": \"https://www.youtube.com/watch?v=h9G6Pv3or3c\",\n    \"paytm_link\": \"https://p-y.tm/1Kd-tTZ\",\n    \"other_payment_link\": \"https://rzp.io/i/OJy8wWO\",\n    \"google_map_link\": \"https://goo.gl/maps/De72fPVZ8tP884eM9\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3500/visiting_card/5ea5aea188a6ba183fe50b1b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"visiting_card",
+						"5ea5aea188a6ba183fe50b1b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/visiting_cards",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODc5MTYzMTgsIm5iZiI6MTU4NzkxNjMxOCwianRpIjoiNDI4Njc1ZDUtNzNjMS00YTVjLTk1NzAtOTc3MjAyNjEyMWZkIiwiZXhwIjoxNjE5NDUyMzE4LCJpZGVudGl0eSI6IjVlYTVhZTE3ODBiMjc5MDE1ZTIyNmY5MCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.AG5_dCoXZ2wE_G85os7ZZRANRVew3eDFfjkv5BJDtFU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_name\": \"elavarasan\",\n    \"email\": \"rameshelava@gmail.com\",\n    \"mobile_no\": \"8531990331\",\n    \"company_name\": \"PrinceDecors\",\n    \"designation\": \"Founder\",\n    \"company_link\": \"https://princedecors.com\",\n    \"company_address\": \"NO:6/64,balaraman first cross street,Nanmangalam,Chennai-600117.\",\n    \"facebook_link\": \"https://www.facebook.com/princedecors/\",\n    \"messenger_link\": \"http://m.me/princedecors\",\n    \"twitter_link\": \"https://twitter.com/elavara27570054\",\n    \"linkedin_link\": \"https://www.linkedin.com/in/elavarasan92\",\n    \"instagram_link\": \"https://www.instagram.com/princedecors/\",\n    \"youtube_link\": \"https://www.youtube.com/watch?v=h9G6Pv3or3c\",\n    \"paytm_link\": \"https://p-y.tm/1Kd-tTZ\",\n    \"other_payment_link\": \"https://rzp.io/i/OJy8wWO\",\n    \"google_map_link\": \"https://goo.gl/maps/De72fPVZ8tP884eM9\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3500/visiting_cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"visiting_cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_name\": \"Elavarasan\",\n    \"email\": \"elavarasan_natarajan@yahoo.com\",\n    \"picture_link\": \"https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3166267760083480&height=50&width=50&ext=1590480380&hash=AeR4gImK_vAuhEWz\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3500/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3500/visiting_card/5ea5aea188a6ba183fe50b1b",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3500/visiting_card/5ea5aea188a6ba183fe50b1b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3500",
+					"path": [
+						"visiting_card",
+						"5ea5aea188a6ba183fe50b1b"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
