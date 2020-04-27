@@ -5,6 +5,8 @@ from flask_mail import Mail
 
 from database.db import initialize_db
 from flask_restful import Api
+
+from resources.cors_init import initialize_cors
 from resources.errors import errors
 from resources.jwt_init import initialize_jwt
 
@@ -26,3 +28,4 @@ bcrypt = Bcrypt(app)
 initialize_jwt(app)
 initialize_db(app)
 initialize_routes(api)
+initialize_cors(app)
