@@ -6,6 +6,7 @@ from database.models import VisitingCard, User
 
 
 class VisitingCardsApi(Resource):
+    @jwt_required
     def get(self):
         query = VisitingCard.objects()
         visiting_cards = VisitingCard.objects().to_json()

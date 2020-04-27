@@ -78,7 +78,9 @@ class SocialAuthApi(Resource):
 class LoginApi(Resource):
     def post(self):
         try:
+            print("request: " + str(request))
             body = request.get_json()
+            print("Body: "+str(body))
             user = User.objects.get(email=body.get('email'))
             authorized = user.check_password(body.get('password'))
             if not authorized:
