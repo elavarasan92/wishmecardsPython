@@ -31,16 +31,16 @@ class SignupApi(Resource):
             return {'id': str(user_id)}, 200
         except ValidationError as e:
             print("SignupApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("SignupApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except NotUniqueError as e:
             print("SignupApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 409
         except Exception as e:
             print("SignupApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500
 
 
 class SocialAuthApi(Resource):
@@ -63,16 +63,16 @@ class SocialAuthApi(Resource):
             return {'token': access_token, 'user_id': str(user.id)}, 200
         except ValidationError as e:
             print("SocialAuthApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("SocialAuthApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except NotUniqueError as e:
             print("SocialAuthApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except Exception as e:
             print("SocialAuthApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500
 
 
 class LoginApi(Resource):
@@ -91,19 +91,19 @@ class LoginApi(Resource):
             return {'token': access_token, 'user_id': str(user.id)}, 200
         except (UnauthorizedError, DoesNotExist) as e:
             print("LoginApi Unauthorised  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 401
         except ValidationError as e:
             print("LoginApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("LoginApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
-        except NotUniqueError  as e:
+            return {'error': str(e)}, 400
+        except NotUniqueError as e:
             print("LoginApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except Exception as e:
             print("LoginApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500
 
 
 class LogoutApi(Resource):
@@ -115,4 +115,4 @@ class LogoutApi(Resource):
             return {'msg': 'Logged out successfully'}, 200
         except Exception as e:
             print("SignupApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500

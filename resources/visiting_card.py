@@ -28,16 +28,16 @@ class VisitingCardsApi(Resource):
             return {'id': str(event_id)}, 200
         except ValidationError as e:
             print("VisitingCardApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("VisitingCardApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except NotUniqueError as e:
             print("VisitingCardApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except Exception as e:
             print("VisitingCardApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500
 
 
 class VisitingCardApi(Resource):
@@ -52,19 +52,19 @@ class VisitingCardApi(Resource):
         except InvalidQueryError as e:
             return {'error': str(e)}, 200
         except DoesNotExist as e:
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except ValidationError as e:
             print("SocialAuthApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("SocialAuthApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except NotUniqueError as e:
             print("SocialAuthApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except Exception as e:
             print("SocialAuthApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500
 
     @jwt_required
     def delete(self, id):
@@ -74,35 +74,35 @@ class VisitingCardApi(Resource):
             visiting_card.delete()
             return {'id': str(id)+" : Successfully Deleted"}, 200
         except DoesNotExist as e:
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except ValidationError as e:
             print("SocialAuthApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("SocialAuthApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except NotUniqueError as e:
             print("SocialAuthApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except Exception as e:
             print("SocialAuthApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 500
 
     def get(self, id):
         try:
             visiting_cards = VisitingCard.objects.get(id=id).to_json()
             return Response(visiting_cards, mimetype="application/json", status=200)
         except DoesNotExist as e:
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except ValidationError as e:
             print("SocialAuthApi ValidationError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except FieldDoesNotExist as e:
             print("SocialAuthApi FieldDoesNotExist  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except NotUniqueError as e:
             print("SocialAuthApi NotUniqueError  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 400
         except Exception as e:
             print("SocialAuthApi Exception  : " + str(e))
-            return {'error': str(e)}, 200
+            return {'error': str(e)}, 5
