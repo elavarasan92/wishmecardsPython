@@ -2,7 +2,7 @@ from .movie import MoviesApi, MovieApi
 from .event_detail import EventDetailsApi, EventDetailApi
 from .image_detail import DisplayImageApi, UploadImageApi
 from .auth import SignupApi, LoginApi, LogoutApi, SocialAuthApi
-from .render_html import RenderHTMLApi
+from .render_html import RenderHTMLApi, BusinessCardApi
 from .reset_password import ForgotPassword, ResetPassword
 from .visiting_card import VisitingCardsApi, VisitingCardApi
 
@@ -30,4 +30,5 @@ def initialize_routes(api):
     api.add_resource(ResetPassword, '/auth/reset')
 
     api.add_resource(RenderHTMLApi, '/')
+    api.add_resource(BusinessCardApi, '/<id>')
 
