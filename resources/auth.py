@@ -1,6 +1,6 @@
 import datetime
 
-from flask import request
+from flask import Response, request
 from flask_jwt_extended import (
     create_access_token, get_raw_jwt,
     jwt_required)
@@ -27,8 +27,11 @@ class SignupApi(Resource):
             user = User(**body)
             user.hash_password()
             user.save()
-            user_id = user.id
-            return {'id': str(user_id)}, 200
+            expires = datetime.timedelta(days=365)
+            access_token = create_access_token(identity=str(user.id), expires_delta=expires)
+            user.access_token = access_token
+            user_json = user.to_json()
+            return Response(user_json, mimetype="application/json", status=200)
         except ValidationError as e:
             print("SignupApi ValidationError  : " + str(e))
             return {'error': str(e)}, 400
@@ -52,7 +55,9 @@ class SocialAuthApi(Resource):
                 print("Value is not none user is already registered : " + str(user))
                 expires = datetime.timedelta(days=365)
                 access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-                return {'token': access_token, 'user_id': str(user.id)}, 200
+                user.access_token = access_token
+                user_json = user.to_json()
+                return Response(user_json, mimetype="application/json", status=200)
         except User.DoesNotExist as e:
             print("Value is none user is not registered so registering and logging in : " + str(e))
             user = User(**body)
@@ -60,7 +65,9 @@ class SocialAuthApi(Resource):
             user.save()
             expires = datetime.timedelta(days=365)
             access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-            return {'token': access_token, 'user_id': str(user.id)}, 200
+            user.access_token = access_token
+            user_json = user.to_json()
+            return Response(user_json, mimetype="application/json", status=200)
         except ValidationError as e:
             print("SocialAuthApi ValidationError  : " + str(e))
             return {'error': str(e)}, 400
@@ -88,7 +95,9 @@ class LoginApi(Resource):
 
             expires = datetime.timedelta(days=365)
             access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-            return {'token': access_token, 'user_id': str(user.id)}, 200
+            user.access_token = access_token
+            user_json = user.to_json()
+            return Response(user_json, mimetype="application/json", status=200)
         except (UnauthorizedError, DoesNotExist) as e:
             print("LoginApi Unauthorised  : " + str(e))
             return {'error': str(e)}, 401

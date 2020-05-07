@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3c2d89b-dc31-4f72-b7fe-5c3218e208fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/file-uploadBkp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/render_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/render_html.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/file-upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/file-upload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/visiting_card.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/visiting_card.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,6 +235,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586755108844" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1588666315022">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1588666315022" />
     <state x="417" y="129" key="EnvironmentVariablesDialog" timestamp="1586058643629">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -244,22 +247,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586677320148" />
-    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1588498433803">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1588759213191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588498433803" />
-    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1588498433803">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
+    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1588759213191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588498433803" />
-    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1588498433803">
+    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
+    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1588759213191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588498433803" />
-    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1588498433803">
+    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1588759213191">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588498433803" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
     <state x="467" y="89" key="RollbackChangesDialog" timestamp="1586680627443">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -272,10 +275,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1586605651755" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1588476401774">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1588836003965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588476401774" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588836003965" />
     <state x="486" y="182" width="710" height="546" key="find.popup" timestamp="1587905152663">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
