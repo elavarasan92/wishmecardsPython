@@ -27,7 +27,8 @@ class VisitingCardsApi(Resource):
             user = User.objects.get(id=user_id)
             visiting_card = VisitingCard(**body, added_by=user)
             visiting_card.save()
-            user.update(push__visiting_card=visiting_card)
+            user.update(visiting_card=visiting_card)
+            user.visiting_card_exist = True
             user.save()
             visiting_card_id = visiting_card.id
             print("visiting_card  : "+visiting_card.to_json())

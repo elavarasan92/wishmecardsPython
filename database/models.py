@@ -62,7 +62,9 @@ class User(db.Document):
     access_token= db.StringField(required=False, min_length=6)
     movies = db.ListField(db.ReferenceField('Movie', reverse_delete_rule=db.PULL))
     event_detail = db.ReferenceField('EventDetail', reverse_delete_rule=db.PULL)
-    visiting_card = db.ReferenceField('VisitingCard', reverse_delete_rule=db.PULL)
+    visiting_card_exist = db.BooleanField(required=False, default=False)
+    visiting_card = db.ReferenceField(VisitingCard, dbref=True,reverse_delete_rule=db.PULL)
+    visiting_card_id = db.StringField(required=False)
 
     def hash_password(self):
         if not (self.password and self.password.strip()):

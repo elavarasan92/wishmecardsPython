@@ -38,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
-    <property name="settings.editor.selected.configurable" value="ics" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -247,30 +247,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586677320148" />
-    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1588759213191">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1588926630377">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
-    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1588759213191">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588926630377" />
+    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1588926630376">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
-    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1588759213191">
+    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588926630376" />
+    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1588926630375">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
-    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1588759213191">
+    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588926630375" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1588926630376">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588759213191" />
-    <state x="467" y="89" key="RollbackChangesDialog" timestamp="1586680627443">
+    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588926630376" />
+    <state x="467" y="89" key="RollbackChangesDialog" timestamp="1588922514525">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="467" y="89" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586680627443" />
-    <state x="186" y="9" key="SettingsEditor" timestamp="1586705012847">
+    <state x="467" y="89" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588922514525" />
+    <state x="186" y="9" key="SettingsEditor" timestamp="1588922909948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586705012847" />
+    <state x="186" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588922909948" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1586605651755">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

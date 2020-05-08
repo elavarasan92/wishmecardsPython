@@ -1,4 +1,5 @@
 import datetime
+from pprint import pprint
 
 from flask import Response, request
 from flask_jwt_extended import (
@@ -7,9 +8,10 @@ from flask_jwt_extended import (
 from flask_restful import Resource
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError
 
-from database.models import User
+from database.models import User, VisitingCard
 from resources.errors import SchemaValidationError, EmailAlreadyExistsError, UnauthorizedError, InternalServerError
 from .jwt_init import jwt
+from jsonmerge import merge
 
 blacklist = set()
 
@@ -56,8 +58,9 @@ class SocialAuthApi(Resource):
                 expires = datetime.timedelta(days=365)
                 access_token = create_access_token(identity=str(user.id), expires_delta=expires)
                 user.access_token = access_token
-                user_json = user.to_json()
-                return Response(user_json, mimetype="application/json", status=200)
+                if user.visiting_card_exist:
+                    user.visiting_card_id = user.visiting_card.id
+                return Response(user.to_json(), mimetype="application/json", status=200)
         except User.DoesNotExist as e:
             print("Value is none user is not registered so registering and logging in : " + str(e))
             user = User(**body)
@@ -66,8 +69,9 @@ class SocialAuthApi(Resource):
             expires = datetime.timedelta(days=365)
             access_token = create_access_token(identity=str(user.id), expires_delta=expires)
             user.access_token = access_token
-            user_json = user.to_json()
-            return Response(user_json, mimetype="application/json", status=200)
+            if user.visiting_card_exist:
+                user.visiting_card_id = user.visiting_card.id
+            return Response(user.to_json(), mimetype="application/json", status=200)
         except ValidationError as e:
             print("SocialAuthApi ValidationError  : " + str(e))
             return {'error': str(e)}, 400
@@ -96,8 +100,9 @@ class LoginApi(Resource):
             expires = datetime.timedelta(days=365)
             access_token = create_access_token(identity=str(user.id), expires_delta=expires)
             user.access_token = access_token
-            user_json = user.to_json()
-            return Response(user_json, mimetype="application/json", status=200)
+            if user.visiting_card_exist:
+                user.visiting_card_id = user.visiting_card.id
+            return Response(user.to_json(), mimetype="application/json", status=200)
         except (UnauthorizedError, DoesNotExist) as e:
             print("LoginApi Unauthorised  : " + str(e))
             return {'error': str(e)}, 401
