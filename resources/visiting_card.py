@@ -25,13 +25,19 @@ class VisitingCardsApi(Resource):
             body = request.get_json()
             print("body : " + str(request.get_json()))
             user = User.objects.get(id=user_id)
+            visiting_card = VisitingCard.objects.get(added_by=user_id)
+            print(visiting_card.id)
+            if not (visiting_card is None):
+                print("visiting card exist ")
+                return Response(visiting_card.to_json(), mimetype="application/json", status=200)
+        except DoesNotExist as e:
+            print("VisitingCardApi post DoesNotExist since no visiting card exist for this user creating new one : " + str(e))
             visiting_card = VisitingCard(**body, added_by=user)
             visiting_card.save()
             user.update(visiting_card=visiting_card)
             user.visiting_card_exist = True
             user.save()
-            visiting_card_id = visiting_card.id
-            print("visiting_card  : "+visiting_card.to_json())
+            print("visiting_card  : " + visiting_card.to_json())
             return Response(visiting_card.to_json(), mimetype="application/json", status=200)
         except ValidationError as e:
             print("VisitingCardApi post ValidationError  : " + str(e))
