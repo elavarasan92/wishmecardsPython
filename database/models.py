@@ -22,6 +22,7 @@ class VisitingCard(db.Document):
     payment_link = db.StringField(required=False,  max_length=200)
     other_payment_link = db.StringField(required=False,  max_length=200)
     google_map_link = db.StringField(required=False,  max_length=200)
+    profile_picture_link = db.StringField(required=False)
     added_by = db.ReferenceField('User')
     created = db.DateTimeField(default=datetime.datetime.utcnow)
 
