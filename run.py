@@ -1,3 +1,10 @@
+import os
 from app import app
 
-app.run(port=3500,debug=True)
+#----------------------------------------
+# launch
+#----------------------------------------
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 3500))
+    app.run(host='0.0.0.0', port=port, debug=True)

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Authentication</title>
+</head>
+
+<body>
+  <div>
+    
+	 <button id="socialAuth">socialAuth</button><br><br>
+	 <button id="signup">SignUp</button><br><br>
+    <button id="goodLogin">Good Login</button><br><br>
+    <button id="badLogin">Bad Login</button><br><br>
+    <button id="logout">Logout</button><br><br><br>
+	<input type="text" name="visitingCardId" id="visitingCardId" placeholder="visitingcardid" value="5eb5104112ffcc2c22613084"/><br><br>
+	<button id="getVisitingCardById">getVisitingCardById</button><br><br>
+	<button id="getVisitingCard">getVisitingCard</button><br><br>
+	 <button id="createDummyCard">createDummyCard post </button><br><br>
+	<button id="createVisitingCard">CreateVisitingCard - Post </button><br><br><br>
+	<input type="text" name="visitingCardIdPut" id="visitingCardIdPut" placeholder="visitingCardIdPut" value="5eb5104112ffcc2c22613084"/><br><br>
+	<button id="editVisitingCardById">EditVisitingCard by ID- Put </button><br><br>
+	
+   
+  </div>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript">
+  var baseUrl = "https://einvite.tech/";
+  //var baseUrl = "https://147.139.1.55/";
+  $(document).ready(function() {
+  
+    $('#getVisitingCardById').click(function() {
+      $.ajax({
+        type: 'GET',
+        url: baseUrl+'visiting_card/'+$('#visitingCardId').val(),
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+          if (localStorage.token) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+          }
+        },
+        success: function(data) {
+        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+          alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+	
+	
+    $('#getVisitingCard').click(function() {
+      $.ajax({
+        type: 'GET',
+        url: baseUrl+'visiting_cards',
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+          if (localStorage.token) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+          }
+        },
+        success: function(data) {
+        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+          alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+	
+	
+  $('#editVisitingCardById').click(function() {
+      $.ajax({
+        type: 'PUT',
+        url: baseUrl+'visiting_card/'+$('#visitingCardIdPut').val(),
+        contentType: "application/json",
+		data: JSON.stringify({
+			"company_link": "https://princedecors.com123",
+			"company_address": "NO:dsdsddssdds put street,Nanmangalam,Chennai-600117."
+		}),
+        beforeSend: function(xhr) {
+          if (localStorage.token) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+          }
+        },
+        success: function(data) {
+        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+          alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+	
+    $('#createVisitingCard').click(function() {
+      $.ajax({
+        type: 'POST',
+        url: baseUrl+'visiting_cards',
+        contentType: "application/json",
+		data: JSON.stringify({
+    "user_name": "elavarasan",
+    "email": "rameshelava@gmail.com",
+    "mobile_no": "8531990331",
+    "company_name": "PrinceDecors",
+    "designation": "Founder",
+	"services_provided": "Wedding planning",
+    "company_link": "https://princedecors.com",
+    "company_address": "NO:6/64,balaraman first cross street,Nanmangalam,Chennai-600117.",
+    "facebook_link": "https://www.facebook.com/princedecors/",
+    "messenger_link": "http://m.me/princedecors",
+    "twitter_link": "https://twitter.com/elavara27570054",
+    "linkedin_link": "https://www.linkedin.com/in/elavarasan92",
+    "instagram_link": "https://www.instagram.com/princedecors/",
+    "youtube_link": "https://www.youtube.com/watch?v=h9G6Pv3or3c",
+	"payment_link":"https://rzp.io/i/OJy8wWO",
+    "other_payment_link": "https://rzp.io/i/OJy8wWO",
+    "google_map_link": "https://goo.gl/maps/De72fPVZ8tP884eM9"
+}),
+        beforeSend: function(xhr) {
+          if (localStorage.token) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+          }
+        },
+        success: function(data) {
+        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+          alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+        },
+       error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+	
+	$('#signup').click(function() {
+      $.ajax({
+        type: "POST",
+        url: baseUrl+"auth/socialauth",
+        contentType: "application/json",
+        data: JSON.stringify({
+    "user_name": "Elavarasan",
+    "email": "rameshelava@gmail.com",
+	"password":"default",
+    "picture_link": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3166267760083480&height=50&width=50&ext=1590480380&hash=AeR4gImK_vAuhEWz"
+}),
+        success: function(data) {
+          console.log(data);
+          localStorage.token = data.access_token;
+          console.log('access_token : ' + data.access_token);
+		  console.log('user_name  : ' + data.user_name);
+		  if(data.visiting_card){
+		  console.log('Visiting exists already Visiting Card ID : ' + Object.values(data.visiting_card[0]));
+		  }else{
+		   console.log('no Visiting Card create new ');
+        }},
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+	
+	
+      $('#socialAuth').click(function() {
+      $.ajax({
+        type: "POST",
+        url: baseUrl+"auth/socialauth",
+        contentType: "application/json",
+        data: JSON.stringify({
+    "user_name": "Elavarasan",
+    "email": "elavarasan_natarajan@ahoo.com",
+    "picture_link": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3166267760083480&height=50&width=50&ext=1590480380&hash=AeR4gImK_vAuhEWz"
+}),
+        success: function(data) {
+          console.log(data);
+          localStorage.token = data.access_token;
+          console.log('access_token : ' + data.access_token);
+		  console.log('user_name  : ' + data.user_name);
+		  if(data.visiting_card){
+		  console.log('Visiting Card ID : ' + Object.values(data.visiting_card[0]));
+		  }else{
+		   console.log('no Visiting Card create new ');
+        }
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+    $('#goodLogin').click(function() {
+      $.ajax({
+        type: "POST",
+        url: baseUrl+"auth/login",
+        contentType: "application/json",
+        data: JSON.stringify({
+          "email": "rameshelava@gmail.com",
+          "password": "default"
+        }),
+        success: function(data) {
+          console.log(data);
+          localStorage.token = data.access_token;
+          console.log('access_token : ' + data.access_token);
+		  console.log('user_name  : ' + data.user_name);
+		  if(data.visiting_card_exist){
+			  localStorage.visiting_card_id =Object.values(data.visiting_card_id);
+		  console.log('Visiting exists already Visiting Card ID : ' + Object.values(data.visiting_card_id));
+		  }else{
+		   console.log('no Visiting Card create new ');
+        }
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+    $('#badLogin').click(function() {
+      $.ajax({
+        type: "POST",
+        url: baseUrl+"auth/login",
+        contentType: "application/json",
+        data: JSON.stringify({
+          "email": "elavarasan_natarajan@yahoo.com",
+          "password": "default1"
+        }),
+        success: function(data) {
+          alert("ERROR: it is not supposed to alert.");
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+	
+	$('#createDummyCard').click(function() {
+		$.ajax({
+			type: 'POST',
+			url: baseUrl + 'visiting_cards',
+			contentType: "application/json",
+			data: JSON.stringify({
+				"user_name": "",
+				"email": "",
+				"mobile_no": "",
+				"company_name": "",
+				"designation": "",
+				"services_provided": "",
+				"company_link": "",
+				"company_address": "",
+				"facebook_link": "",
+				"messenger_link": "",
+				"twitter_link": "",
+				"linkedin_link": "",
+				"instagram_link": "",
+				"youtube_link": "",
+				"payment_link": "",
+				"other_payment_link": "",
+				"google_map_link": ""
+			}),
+			beforeSend: function (xhr) {
+				if (localStorage.token) {
+					xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+				}
+			},
+			success: function (data) {
+				console.log(JSON.stringify(data));
+				alert(JSON.stringify(data));
+				alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+			},
+			error: function (xhr, status, error) {
+				var err= JSON.parse(xhr.responseText);
+				console.log("xhr.responseText : " + xhr.responseText);
+				console.log("error message : " + err.error);
+				console.log(xhr.status);
+				console.log("status : " + status);
+				console.log("error : " + error);
+			}
+		});
+	});
+	
+    $('#logout').click(function() {
+      localStorage.clear();
+    });
+  });
+  </script>
+</body>
+
+</html>

@@ -2,8 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3c2d89b-dc31-4f72-b7fe-5c3218e208fc" name="Default Changelist" comment="login logout registration eventdetails create and image upload">
+      <change afterPath="$PROJECT_DIR$/app/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/movie-bag.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/movie-bag.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyPyFiles/FlaskJWT.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/MyPyFiles/FlaskJWT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/cors_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/cors_init.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/errors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/event_detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/event_detail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/image_detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/image_detail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/jwt_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/jwt_init.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/movie.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/movie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/render_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/render_html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/reset_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/reset_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/visiting_card.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/visiting_card.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mail_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/mail_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/email/reset_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/email/reset_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/email/reset_password.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/email/reset_password.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/file-upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/file-upload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/file-uploadBkp.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/file-uploadBkp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/render_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/render_html.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/BaseCase.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/BaseCase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/UploadImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/UploadImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_create_movie.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/test_create_movie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_get_movies.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/test_get_movies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/test_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/test_signup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +62,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1a5DKxh6jMajRkDHikW8ApA4wlS" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -39,14 +77,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Elavarasan\PyhtonBackend\wishmecardsPython\app" />
+      <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\templates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Elavarasan\PyhtonBackend\wishmecardsPython\templates" />
       <recent name="D:\Elavarasan\PyhtonBackend\wishmecardsPython\resources" />
       <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\templates" />
       <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\database" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Elavarasan\PyhtonBackend\Part - 6\movie-bag\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
@@ -245,22 +284,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586677320148" />
-    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1589040692342">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom" timestamp="1589128574389">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589040692342" />
-    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1589040692342">
+    <state width="1345" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589128574389" />
+    <state width="1345" height="119" key="GridCell.Tab.0.center" timestamp="1589128574389">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589040692342" />
-    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1589040692341">
+    <state width="1345" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589128574389" />
+    <state width="1345" height="119" key="GridCell.Tab.0.left" timestamp="1589128574389">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589040692341" />
-    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1589040692342">
+    <state width="1345" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589128574389" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right" timestamp="1589128574389">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589040692342" />
+    <state width="1345" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589128574389" />
     <state x="467" y="89" key="RollbackChangesDialog" timestamp="1588922514525">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -277,10 +316,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589081513940" />
-    <state x="486" y="182" width="710" height="546" key="find.popup" timestamp="1587905152663">
+    <state x="486" y="182" width="710" height="546" key="find.popup" timestamp="1589113936416">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="486" y="182" width="710" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1587905152663" />
+    <state x="486" y="182" width="710" height="546" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1589113936416" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586603871493">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
