@@ -2,9 +2,9 @@ from .movie import MoviesApi, MovieApi
 from .event_detail import EventDetailsApi, EventDetailApi
 from .image_detail import DisplayImageApi, UploadImageApi
 from .auth import SignupApi, LoginApi, LogoutApi, SocialAuthApi
-from .render_html import RenderHTMLApi, BusinessCardApi
+from .render_html import RenderHTMLApi, BusinessCardApi, ShowCardApi
 from .reset_password import ForgotPassword, ResetPassword
-from .visiting_card import VisitingCardsApi, VisitingCardApi
+from .visiting_card import VisitingCardsApi, VisitingCardApi, VisitingCardViewApi
 
 
 def initialize_routes(api):
@@ -16,8 +16,10 @@ def initialize_routes(api):
 
     api.add_resource(VisitingCardsApi, '/visiting_cards')
     api.add_resource(VisitingCardApi, '/visiting_card/<id>')
+    api.add_resource(VisitingCardViewApi, '/view_card/<user_name>')
 
-    api.add_resource(UploadImageApi, '/upload_image')
+
+    api.add_resource(UploadImageApi, '/upload_image/<id>')
     api.add_resource(DisplayImageApi, '/display_image/<id>')
 
     api.add_resource(SocialAuthApi, '/auth/socialauth')
@@ -29,6 +31,7 @@ def initialize_routes(api):
     api.add_resource(ForgotPassword, '/auth/forgot')
     api.add_resource(ResetPassword, '/auth/reset')
 
-    api.add_resource(RenderHTMLApi, '/')
+    api.add_resource(RenderHTMLApi, '/browser_client')
     api.add_resource(BusinessCardApi, '/<id>')
+    api.add_resource(ShowCardApi, '/card/<id>')
 

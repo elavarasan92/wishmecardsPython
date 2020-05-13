@@ -71,6 +71,9 @@
         console.log(JSON.stringify(data));
         alert(JSON.stringify(data));
           alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+          console.log(data);
+          visiting_card_id = data.visiting_card_id;
+          console.log("visiting_card_id: "+visiting_card_id);
         },
         error: function (xhr, status, error) {
 					var err= JSON.parse(xhr.responseText);

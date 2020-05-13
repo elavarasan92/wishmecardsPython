@@ -1,22 +1,27 @@
 import io
+
+import werkzeug
 from flask import Response, request, render_template, jsonify, make_response
 from flask import send_file
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from flask_restful import Resource
+from flask_restful import Resource, Api, reqparse
 from mongoengine.errors import DoesNotExist, InvalidQueryError
 from werkzeug.utils import secure_filename
-
-from app.database.models import ImageDetail
+from werkzeug.utils import secure_filename
+from app.database.models import ImageDetail, VisitingCard
 from app.resources.errors import SchemaValidationError, InternalServerError, \
     UpdatingImageDetailError, DeletingImageDetailError, ImageDetailNotExistsError
 
+parser = reqparse.RequestParser()
+parser.add_argument('file', type=werkzeug.datastructures.FileStorage, location='files')
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
+errors = {}
 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-#http://127.0.0.1:3500/display_image/5e9327491848788505e send object id that is id of user or eventdetail object
+
 class DisplayImageApi(Resource):
     def get(self,id):
         image_value = ImageDetail.objects(image_ref_id=id).first()
@@ -28,90 +33,89 @@ class DisplayImageApi(Resource):
 
 
 class UploadImageApi(Resource):
-    # to get html for uploading image
-    def get(self):
-        headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('file-upload.html'), 200, headers)
+    def post(self,id):
+        print("Visiting card id to upload image to  that : "+id)
+        visiting_card_id = id
+        try:
+            data = parser.parse_args()
+            print(data);
+            print(data['file'])
+            if data['file'] is None or data['file'] == "":
+                return {
+                    'data': '',
+                    'message': 'No file found',
+                    'status': 'error'
+                }
+            photo = data['file']
 
-    # to upload file
-    def post(self):
-        if 'files[]' not in request.files:
-            resp = jsonify({'message': 'No file part in the request'})
-            resp.status_code = 400
-            return resp
-        #image_ref_id = request.image_ref_id
-        # pretty printing data
-        print("Form : "+str(request.form.get('image_ref_id')))
-        print("get_json : " + str(request.get_json()))
-
-        files = request.files.getlist('files[]')
-        image_ref_id = request.form.get('image_ref_id')
-        errors = {}
-        success = False
-
-        for file in files:
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                couple_image = ImageDetail(image_ref_id=image_ref_id)
-                couple_image.image_data.new_file()
-                couple_image.image_data.replace(file, filename="image.jpg")
-                couple_image.image_data.close()
-                couple_image.save()
-
-                success = True
+            if photo:
+                if photo and allowed_file(photo.filename):
+                    filename = secure_filename(photo.filename)
+                    couple_image = ImageDetail.objects.get(image_ref_id=visiting_card_id)
+                    if not (couple_image is None):
+                        print("Image already exist updating " + str(couple_image))
+                        couple_image.image_data.new_file()
+                        couple_image.image_data.replace(photo, filename="image.jpg")
+                        couple_image.image_data.close()
+                        couple_image.save()
+                        visiting_card = VisitingCard.objects.get(id=visiting_card_id)
+                        print(visiting_card.id)
+                        if not (visiting_card is None):
+                            print("visiting card exist ")
+                            print("File uploaded successfully ")
+                            visiting_card.update(profile_picture_exist=True)
+                            visiting_card.save()
+                            return {
+                                'data': '',
+                                'message': 'photo uploaded',
+                                'status': 'success'
+                            }
+                        else:
+                            print("visiting card doesnt  exist ")
+                            return {
+                                'data': 'visiting card doesnt exist with id '+visiting_card_id,
+                                'message': 'photo upload failed',
+                                'status': 'errror'
+                            }
+                else:
+                    errors[photo.filename] = 'File type is not allowed'
+                    print("File upload  Failed ")
+                    return {
+                        'data': 'visiting card doesnt exist with id '+visiting_card_id,
+                        'message': 'photo upload failed',
+                        'status': 'errror'
+                    }
+        except DoesNotExist:
+            print("Image doesnt exist saving ")
+            couple_image1 = ImageDetail(image_ref_id=visiting_card_id)
+            couple_image1.image_data.new_file()
+            couple_image1.image_data.replace(photo, filename="image.jpg")
+            couple_image1.image_data.close()
+            couple_image1.save()
+            print("File uploaded successfully ")
+            visiting_card = VisitingCard.objects.get(id=visiting_card_id)
+            print(visiting_card.id)
+            if not (visiting_card is None):
+                print("visiting card exist ")
+                print("File uploaded successfully ")
+                visiting_card.update(profile_picture_exist=True)
+                visiting_card.save()
+                return {
+                    'data': '',
+                    'message': 'photo uploaded',
+                    'status': 'success'
+                }
             else:
-                errors[file.filename] = 'File type is not allowed'
-
-        if success and errors:
-            errors['message'] = 'File(s) successfully uploaded'
-            resp = jsonify(errors)
-            resp.status_code = 206
-            return resp
-        if success:
-            resp = jsonify({'message': 'Files successfully uploaded'})
-            resp.status_code = 201
-            return resp
-        else:
-            print(errors)
-            resp = jsonify(errors)
-            resp.status_code = 400
-            print(resp)
-            return resp
-
-
-class EditImageApi(Resource):
-    @jwt_required
-    def put(self, id):
-        try:
-            user_id = get_jwt_identity()
-            couple_image = ImageDetail.objects.get(id=id, added_by=user_id)
-            body = request.get_json()
-            ImageDetail.objects.get(id=id).update(**body)
-            return 'Successfully updated image ', 200
-        except InvalidQueryError:
-            raise SchemaValidationError
-        except DoesNotExist:
-            raise UpdatingImageDetailError
-        except Exception:
-            raise InternalServerError
-
-    @jwt_required
-    def delete(self, id):
-        try:
-            user_id = get_jwt_identity()
-            couple_image = ImageDetail.objects.get(id=id, added_by=user_id)
-            couple_image.delete()
-            return 'Successfully deleted Image', 200
-        except DoesNotExist:
-            raise DeletingImageDetailError
-        except Exception:
-            raise InternalServerError
-
-    def get(self, id):
-        try:
-            couple_images = ImageDetail.objects.get(id=id).to_json()
-            return Response(couple_images, mimetype="application/json", status=200)
-        except DoesNotExist:
-            raise ImageDetailNotExistsError
-        except Exception:
-            raise InternalServerError
+                print("visiting card doesnt  exist ")
+                return {
+                    'data': 'visiting card doesnt exist with id ' + visiting_card_id,
+                    'message': 'photo upload failed',
+                    'status': 'errror'
+                }
+        except Exception as e:
+            print("File upload exception  : " + str(e))
+            return {
+                'data': str(e) + visiting_card_id,
+                'message': 'photo upload failed',
+                'status': 'errror'
+            }

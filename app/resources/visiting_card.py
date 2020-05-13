@@ -6,7 +6,6 @@ from app.database.models import VisitingCard, User
 
 
 class VisitingCardsApi(Resource):
-    @jwt_required
     def get(self):
         try:
             query = VisitingCard.objects()
@@ -15,7 +14,6 @@ class VisitingCardsApi(Resource):
         except Exception as e:
             print("VisitingCardApi  get all cards Exception  : " + str(e))
             return {'error': str(e)}, 500
-
 
     @jwt_required
     def post(self):
@@ -31,7 +29,9 @@ class VisitingCardsApi(Resource):
                 print("visiting card exist ")
                 return Response(visiting_card.to_json(), mimetype="application/json", status=200)
         except DoesNotExist as e:
-            print("VisitingCardApi post DoesNotExist since no visiting card exist for this user creating new one : " + str(e))
+            print(
+                "VisitingCardApi post DoesNotExist since no visiting card exist for this user creating new one : " + str(
+                    e))
             visiting_card = VisitingCard(**body, added_by=user)
             visiting_card.save()
             user.update(visiting_card=visiting_card)
@@ -50,6 +50,30 @@ class VisitingCardsApi(Resource):
             return {'error': str(e)}, 400
         except Exception as e:
             print("VisitingCardApi post Exception  : " + str(e))
+            return {'error': str(e)}, 500
+
+
+class VisitingCardViewApi(Resource):
+    def get(self, user_name):
+        try:
+            print("id: " + str(id))
+            visiting_card = VisitingCard.objects.get(user_name=user_name).to_json()
+            print("visiting card get by id : " + visiting_card)
+            return Response(visiting_card, mimetype="application/json", status=200)
+        except DoesNotExist as e:
+            print("VisitingCardApi get single card by id  DoesNotExistError  : " + str(e))
+            return {'error': str(e)}, 400
+        except ValidationError as e:
+            print("VisitingCardApi get single card by id ValidationError  : " + str(e))
+            return {'error': str(e)}, 400
+        except FieldDoesNotExist as e:
+            print("VisitingCardApi get single card by id FieldDoesNotExist  : " + str(e))
+            return {'error': str(e)}, 400
+        except NotUniqueError as e:
+            print("VisitingCardApi get single card by id NotUniqueError  : " + str(e))
+            return {'error': str(e)}, 400
+        except Exception as e:
+            print("VisitingCardApi get single card by id Exception  : " + str(e))
             return {'error': str(e)}, 500
 
 
@@ -88,7 +112,7 @@ class VisitingCardApi(Resource):
             user_id = get_jwt_identity()
             visiting_card = VisitingCard.objects.get(id=id, added_by=user_id)
             visiting_card.delete()
-            return {'id': str(id)+" : Successfully Deleted"}, 200
+            return {'id': str(id) + " : Successfully Deleted"}, 200
         except DoesNotExist as e:
             print("VisitingCardApi delete DoesNotExistError  : " + str(e))
             return {'error': str(e)}, 400
@@ -105,14 +129,11 @@ class VisitingCardApi(Resource):
             print("VisitingCardApi delete Exception  : " + str(e))
             return {'error': str(e)}, 500
 
-    @jwt_required
     def get(self, id):
         try:
-            print("id: "+str(id))
-            user_id = get_jwt_identity()
-            print("userid : "+user_id)
-            visiting_card = VisitingCard.objects.get(id=id, added_by=user_id).to_json()
-            print("visiting card get by id : "+visiting_card)
+            print("id: " + str(id))
+            visiting_card = VisitingCard.objects.get(id=id).to_json()
+            print("visiting card get by id : " + visiting_card)
             return Response(visiting_card, mimetype="application/json", status=200)
         except DoesNotExist as e:
             print("VisitingCardApi get single card by id  DoesNotExistError  : " + str(e))
@@ -128,4 +149,4 @@ class VisitingCardApi(Resource):
             return {'error': str(e)}, 400
         except Exception as e:
             print("VisitingCardApi get single card by id Exception  : " + str(e))
-            return {'error': str(e)}, 5
+            return {'error': str(e)}, 500

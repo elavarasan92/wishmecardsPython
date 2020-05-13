@@ -7,6 +7,10 @@ class BusinessCardApi(Resource):
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template('index.html', id=id), 200, headers)
 
+class ShowCardApi(Resource):
+    def get(self, id):
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('view_card.html', id=id), 200, headers)
 
 class RenderHTMLApi(Resource):
     # to get html for uploading image
