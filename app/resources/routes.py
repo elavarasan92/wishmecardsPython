@@ -1,7 +1,7 @@
 from .movie import MoviesApi, MovieApi
 from .event_detail import EventDetailsApi, EventDetailApi
 from .image_detail import DisplayImageApi, UploadImageApi
-from .auth import SignupApi, LoginApi, LogoutApi, SocialAuthApi
+from .auth import SignupApi, LoginApi, LogoutApi, SocialAuthApi, UserApi, UsersApi
 from .render_html import RenderHTMLApi, BusinessCardApi, ShowCardApi
 from .reset_password import ForgotPassword, ResetPassword
 from .visiting_card import VisitingCardsApi, VisitingCardApi, VisitingCardViewApi
@@ -10,6 +10,8 @@ from .visiting_card import VisitingCardsApi, VisitingCardApi, VisitingCardViewAp
 def initialize_routes(api):
     api.add_resource(MoviesApi, '/movies')
     api.add_resource(MovieApi, '/movies/<id>')
+    api.add_resource(UsersApi, '/users')
+    api.add_resource(UserApi, '/user_get_edit/<id>')
 
     api.add_resource(EventDetailsApi, '/event_details')
     api.add_resource(EventDetailApi, '/event_details/<id>')

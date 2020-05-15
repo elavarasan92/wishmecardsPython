@@ -3,12 +3,15 @@
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Authentication</title>
+  <title>Browser Client</title>
 </head>
 
 <body>
   <div>
-    
+    <button id="getUsers">getAllUsers</button><br><br>
+      <p>Enter email here</p>
+      	<input type="text" name="email" id="email" placeholder="Email" value="rameshelava@gmail.com"/><br><br>
+      <button id="getUserByEmailId">getUserByEmailId</button><br><br>
 	 <button id="socialAuth">socialAuth</button><br><br>
 	 <button id="signup">SignUp</button><br><br>
     <button id="goodLogin">Good Login</button><br><br>
@@ -21,13 +24,14 @@
 	<button id="createVisitingCard">CreateVisitingCard - Post </button><br><br><br>
 	<input type="text" name="visitingCardIdPut" id="visitingCardIdPut" placeholder="visitingCardIdPut" value="5eb5104112ffcc2c22613084"/><br><br>
 	<button id="editVisitingCardById">EditVisitingCard by ID- Put </button><br><br>
-	
+
    
   </div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript">
-  var baseUrl = "https://einvite.tech/";
+  //var baseUrl = "https://einvite.tech/";
   //var baseUrl = "https://147.139.1.55/";
+  var baseUrl = "http://localhost:3500/";
   $(document).ready(function() {
   
     $('#getVisitingCardById').click(function() {
@@ -55,12 +59,71 @@
 				}
       });
     });
-	
-	
-    $('#getVisitingCard').click(function() {
+
+	  $('#getVisitingCard').click(function() {
       $.ajax({
         type: 'GET',
-        url: baseUrl+'visiting_cards',
+        url: baseUrl+'users',
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+          if (localStorage.token) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+          }
+        },
+        success: function(data) {
+        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+          alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+          console.log(data);
+          visiting_card_id = data.visiting_card_id;
+          console.log("visiting_card_id: "+visiting_card_id);
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+
+
+	  $('#getUsers').click(function() {
+      $.ajax({
+        type: 'GET',
+        url: baseUrl+'users',
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+          if (localStorage.token) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+          }
+        },
+        success: function(data) {
+        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+          alert('Hello ' + data + '! You have successfully accessed to /api/profile.');
+          console.log(data);
+          visiting_card_id = data.visiting_card_id;
+          console.log("visiting_card_id: "+visiting_card_id);
+        },
+        error: function (xhr, status, error) {
+					var err= JSON.parse(xhr.responseText);
+					console.log("xhr.responseText : " + xhr.responseText);
+					console.log("error message : " + err.error);
+					console.log(xhr.status);
+					console.log("status : " + status);
+					console.log("error : " + error);
+				}
+      });
+    });
+
+	
+    $('#getUserByEmailId').click(function() {
+      $.ajax({
+        type: 'GET',
+        url: baseUrl+'user_get_edit/'+$('#email').val(),
         contentType: "application/json",
         beforeSend: function(xhr) {
           if (localStorage.token) {

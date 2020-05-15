@@ -5,10 +5,12 @@ from flask_jwt_extended import (
     create_access_token, get_raw_jwt,
     jwt_required)
 from flask_restful import Resource
-from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError
+from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
+from werkzeug.exceptions import InternalServerError
 
 from app.database.models import User
-from app.resources.errors import UnauthorizedError
+from app.resources.errors import UnauthorizedError, SchemaValidationError, UpdatingMovieError, DeletingMovieError, \
+    MovieNotExistsError
 from .jwt_init import jwt
 
 blacklist = set()
@@ -18,6 +20,50 @@ blacklist = set()
 def check_if_token_in_blacklist(decrypted_token):
     jti = decrypted_token['jti']
     return jti in blacklist
+
+
+class UsersApi(Resource):
+    def get(self):
+        users = User.objects().to_json()
+        return Response(users, mimetype="application/json", status=200)
+
+
+class UserApi(Resource):
+
+    def get(self, id):
+        try:
+            user = User.objects.get(email=id).to_json()
+            return Response(user, mimetype="application/json", status=200)
+        except DoesNotExist:
+            print("user doesnt exist")
+            return 'user doesnt exist', 404
+        except Exception:
+            raise InternalServerError
+
+    @jwt_required
+    def put(self, id):
+        try:
+            print("Put email id : user : " + id)
+            body = request.get_json()
+            User.objects.get(email=id).update(**body)
+            return '', 200
+        except InvalidQueryError:
+            raise SchemaValidationError
+        except DoesNotExist:
+            raise UpdatingMovieError
+        except Exception:
+            raise InternalServerError
+
+    @jwt_required
+    def delete(self, id):
+        try:
+            user = User.objects.get(id=id)
+            user.delete()
+            return 'deleted successfully', 200
+        except DoesNotExist:
+            raise DeletingMovieError
+        except Exception:
+            raise InternalServerError
 
 
 class SignupApi(Resource):
@@ -89,7 +135,7 @@ class LoginApi(Resource):
         try:
             print("request: " + str(request))
             body = request.get_json()
-            print("Body: "+str(body))
+            print("Body: " + str(body))
             user = User.objects.get(email=body.get('email'))
             authorized = user.check_password(body.get('password'))
             if not authorized:
