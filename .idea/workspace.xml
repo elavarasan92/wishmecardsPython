@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3c2d89b-dc31-4f72-b7fe-5c3218e208fc" name="Default Changelist" comment="login logout registration eventdetails create and image upload">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resources/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/render_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/render_html.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
